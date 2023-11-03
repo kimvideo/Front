@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PlaylistActivity"
+    android:orientation="vertical">
+
+    <!-- 6개의 오류는 현재 이미지 버튼이 아무 작동을 안 해서 그런 것 -->
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        tools:ignore="MissingConstraints" >
+
+        <!--로고, 내 정보 이미지-->
+        <ImageView
+            android:id ="@+id/user"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:padding="5dp"
+            android:src="@drawable/useimg"/>
+
+        <ImageView
+            android:id="@+id/mainLogo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/logo" />
+    </FrameLayout>
+
+    <!--  플레이리스트 정보  -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!--    플레이리스트 제목    -->
+        <TextView
+            android:id="@+id/playlistTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:textSize="30dp"
+            android:text="데일리 리스트"/>
+
+        <!--    곡 개수와 시간    -->
+        <TextView
+            android:id="@+id/playlistInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:textSize="15sp"
+            android:textColor="#808080"
+            android:text="20곡 1시간 30분"/>
+
+        <!--    해시태그    -->
+        <TextView
+            android:id="@+id/playlistHashtag"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:text="#분노 #진정 #폭우"/>
+
+    </LinearLayout>
+
+    <!--  구분 선  -->
+    <View
+        android:layout_width="390dp"
+        android:layout_height="2dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:background="#808080"/>
+
+    <!--  리스트  -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ListView
+            android:id="@+id/playlist"
+            android:layout_width="match_parent"
+            android:layout_height="380dp"/>
+
+    </LinearLayout>
+
+    <!--  구분 선  -->
+    <View
+        android:layout_width="390dp"
+        android:layout_height="2dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:background="#808080"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <!--    현재 재생중인 음악 이미지   -->
+        <!--      현재 재생중인 음악의 정보로 변경되도록 구현 필요      -->
+        <ImageView
+            android:id="@+id/playMusicImage"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="30dp"
+            android:background="#808080"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="60dp">
+
+            <!--    현재 재생중인 음악의 제목   -->
+            <!--      현재 재생중인 음악의 정보로 변경되도록 구현 필요      -->
+            <TextView
+                android:id="@+id/playMusicTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_gravity="right"
+                android:layout_marginTop="10dp"
+                android:textSize="20dp"
+                android:text="Title"/>
+
+            <!--    현재 재생중인 음악의 가수이름   -->
+            <!--      현재 재생중인 음악의 정보로 변경되도록 구현 필요      -->
+            <TextView
+                android:id="@+id/playMusicSinger"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_gravity="right"
+                android:textSize="15sp"
+                android:text="Singer"/>
+
+        </LinearLayout>
+
+        <!--음악 재생 / 건너뛰기 / 이전 음악 버튼-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_gravity="right">
+
+            <!--이전 음악 버튼-->
+            <ImageButton
+                android:id="@+id/playPreviousMusic"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:src="@drawable/back_left_btn"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:background="@android:color/transparent"/>
+
+            <!--재생 버튼-->
+            <!-- 버튼을 눌렀을 때 정지 버튼과 이미지가 바뀌는것 구현해야함 -->
+            <ImageButton
+                android:id="@+id/playMusic"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:src="@drawable/play_btn"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:background="@android:color/transparent"/>
+
+            <!-- 음악 건너뛰기 버튼 -->
+            <ImageButton
+                android:id="@+id/playNextMusic"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:src="@drawable/back_left_btn"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:background="@android:color/transparent" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>
