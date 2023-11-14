@@ -18,5 +18,12 @@ class LoginActivity : AppCompatActivity() {
             startActivity(Join)
         }
 
+        // 로그인 없이 메인화면 이동(개발용)
+        val gotoMain = Intent(this,MainActivity::class.java)
+        val SkipBtn = findViewById<Button>(R.id.skipBtn)
+        SkipBtn.setOnClickListener {
+            startActivity(gotoMain)
+        }
+
     }
 }

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ResultActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="측정결과"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:padding="20dp"
+
+        />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_margin="50dp"
+        android:src="@drawable/useimg"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/resultImg"
+        />
+
+    <!-- 측정결과 설명 -->
+    <TextView
+        android:id="@+id/resultComent"
+        android:layout_width="350dp"
+        android:layout_height="100dp"
+        android:background="#cccccc"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:textSize="25dp"
+        android:text="측정결과 : 이런 기분입니다"
+        />
+    <!-- 측정을 토대로 추천 플레이리스트 재생 -->
+    <Button
+        android:id="@+id/playlistBtn"
+        android:gravity="center"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:text="추천 플레이리스트 재생"
+        android:textSize="20dp"
+        />
+
+</LinearLayout>

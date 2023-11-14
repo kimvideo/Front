@@ -1,94 +1,132 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-    android:orientation="vertical">
-
-    <FrameLayout
+<!-- 사이드바 구현 drawerlayout-->
+<layout>
+    <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        tools:ignore="MissingConstraints">
-        <!--로고, 내 정보 이미지-->
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        tools:openDrawer="start">
 
-        <ImageView
-            android:id ="@+id/user"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="5dp"
-            android:padding="5dp"
-            android:src="@drawable/useimg"/>
+        <!-- header.xml파일을 포함하여 사이드바 재작-->
+        <include
+            layout="@layout/appbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true"
+            app:menu="@menu/menu_list"
+            app:headerLayout="@layout/header"/>
 
-        <ImageView
-            android:id="@+id/mainlogo"
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/logo"/>
-    </FrameLayout>
-
-    <View
-        android:layout_width="390dp"
-        android:layout_height="2dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_gravity="center"
-        android:background="#808080"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="70dp">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/imogerecyclerHorizon"
-            android:layout_width="match_parent"
-            android:layout_height="95dp"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:padding="10dp"
+            tools:context=".MainActivity"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/story_layout">
+            android:orientation="vertical">
 
-        </androidx.recyclerview.widget.RecyclerView>
-    </LinearLayout>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                tools:ignore="MissingConstraints">
+                <!--로고, 내 정보 이미지-->
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="383dp">
+                <!-- 계정 이미지-->
+                <ImageView
+                    android:id ="@+id/user"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:padding="5dp"
+                    android:src="@drawable/useimg"/>
 
-        <!--캘린더-->
-        <CalendarView
-            android:layout_width="match_parent"
-            android:layout_height="400dp" />
+                <!-- 앱바 중간에 로고 이미지-->
+                <ImageView
+                    android:id="@+id/mainlogo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/logo"/>
+            </FrameLayout>
 
-    </LinearLayout>
+            <View
+                android:layout_width="390dp"
+                android:layout_height="2dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="center"
+                android:background="#808080"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:orientation="vertical"
-        android:gravity="center">
-        <!-- 측정 버튼-->
-        <Button
-            android:id="@+id/measure_Button"
-            android:gravity="center"
-            android:layout_width="300dp"
-            android:layout_height="70dp"
-            android:text="측정"
-            android:textSize="20dp" />
-        <Button
-            android:id="@+id/playlist_Button"
-            android:gravity="center"
-            android:layout_width="300dp"
-            android:layout_height="70dp"
-            android:text="이전 플레이 리스트 재생"
-            android:textSize="20dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp">
 
-    </LinearLayout>
+                <!-- 스토리 뷰 -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/imogerecyclerHorizon"
+                    android:layout_width="match_parent"
+                    android:layout_height="95dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:padding="10dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/story_layout">
 
-</LinearLayout>
+                </androidx.recyclerview.widget.RecyclerView>
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="383dp">
+
+                <!--캘린더-->
+
+                <CalendarView
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:orientation="vertical"
+                android:gravity="center">
+                <!-- 측정 버튼-->
+
+                <!-- 측정하기  -->
+                <Button
+                    android:id="@+id/measure_Button"
+                    android:gravity="center"
+                    android:layout_width="300dp"
+                    android:layout_height="70dp"
+                    android:text="측정"
+                    android:textSize="20dp" />
+                <!-- 이전 플레이리스트 보기  -->
+                <Button
+                    android:id="@+id/playlist_Button"
+                    android:gravity="center"
+                    android:layout_width="300dp"
+                    android:layout_height="70dp"
+                    android:text="이전 플레이 리스트 재생"
+                    android:textSize="20dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </androidx.drawerlayout.widget.DrawerLayout>
+</layout>

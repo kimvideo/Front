@@ -4,23 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoadingActivity">
+    tools:context=".LoadingActivity"
+    android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/loading"/>
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/loaing"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_margin="90dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/loading" />
+    <TextView
+        android:layout_width="350dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:id="@+id/todaysSomething"
+        android:text="오늘의 한마디"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:background="#CCCCCC"
 
-    <!--
-       <TextView
-           android:layout_width="match_parent"
-           android:layout_height="match_parent"
-           android:text="로딩 창 입니다."
-           android:textSize="30sp"
-           android:gravity="center"
-           />
-
-    -->
-
+        />
 </LinearLayout>
