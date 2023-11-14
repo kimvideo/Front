@@ -7,8 +7,6 @@
     tools:context=".PlaylistActivity"
     android:orientation="vertical">
 
-    <!-- 6개의 오류는 현재 이미지 버튼이 아무 작동을 안 해서 그런 것 -->
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
@@ -98,8 +96,9 @@
         android:background="#808080"/>
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/nowMusic">
 
         <!--    현재 재생중인 음악 이미지   -->
         <!--      현재 재생중인 음악의 정보로 변경되도록 구현 필요      -->
@@ -149,40 +148,35 @@
             <!--이전 음악 버튼-->
             <ImageButton
                 android:id="@+id/playPreviousMusic"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginRight="10dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="15dp"
                 android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:src="@drawable/back_left_btn"
-                android:adjustViewBounds="true"
-                android:scaleType="fitCenter"
+                android:src="@drawable/skip_previous"
+                android:contentDescription= " "
                 android:background="@android:color/transparent"/>
 
             <!--재생 버튼-->
             <!-- 버튼을 눌렀을 때 정지 버튼과 이미지가 바뀌는것 구현해야함 -->
-            <ImageButton
+            <ToggleButton
                 android:id="@+id/playMusic"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center_vertical"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_marginRight="10dp"
-                android:layout_weight="1"
-                android:src="@drawable/play_btn"
-                android:adjustViewBounds="true"
-                android:scaleType="fitCenter"
-                android:background="@android:color/transparent"/>
+                android:background="@drawable/play_pause"
+                android:layout_gravity="center_vertical"
+                android:textOff=""
+                android:textOn=""/>
 
             <!-- 음악 건너뛰기 버튼 -->
             <ImageButton
                 android:id="@+id/playNextMusic"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                android:src="@drawable/back_left_btn"
-                android:adjustViewBounds="true"
-                android:scaleType="fitCenter"
+                android:src="@drawable/skip_next"
+                android:contentDescription= " "
                 android:background="@android:color/transparent" />
 
         </LinearLayout>
