@@ -12,10 +12,10 @@ class LoginActivity : AppCompatActivity() {
 
         // Login
 
-        val Join = Intent(this, JoinActivity::class.java)
-        val joinButton = findViewById<Button>(R.id.joinBtn)
-        joinButton.setOnClickListener {
-            startActivity(Join)
+        val SignUp = Intent(this, SignUpActivity::class.java)
+        val SignUpButton = findViewById<Button>(R.id.signUpBtn)
+        SignUpButton.setOnClickListener {
+            startActivity(SignUp)
         }
 
         // 로그인 없이 메인화면 이동(개발용)
