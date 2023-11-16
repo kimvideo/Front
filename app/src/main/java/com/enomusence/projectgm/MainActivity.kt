@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.enomusence.projectgm.databinding.ActivityMainBinding
 import com.google.android.material.navigation.NavigationView
@@ -23,8 +24,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //리사이클러뷰에 사용될 예정?
-        imogeRecyclerView1 = findViewById(R.id.imogerecyclerHorizon)
+        //여기부터 스토리뷰에 들어갈 코드
+        val storyBoard = findViewById<RecyclerView>(R.id.imogerecycler)
+        val itemList = ArrayList<friendData>()
+        itemList.add(friendData("test1","화남"))
+
+
+        val storyAdapter =storyAdapter(itemList)
+        storyAdapter.notifyDataSetChanged()
+        storyBoard.adapter = storyAdapter
+        storyBoard.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
         //버튼 바인딩
         binding = ActivityMainBinding.inflate(layoutInflater)

@@ -72,7 +72,7 @@
 
                 <!-- 스토리 뷰 -->
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/imogerecyclerHorizon"
+                    android:id="@+id/imogerecycler"
                     android:layout_width="match_parent"
                     android:layout_height="95dp"
                     android:layout_weight="1"
