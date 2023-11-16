@@ -20,23 +20,33 @@ class MusicPlayerActivity : AppCompatActivity() {
     // binding 선언
     private lateinit var binding: ActivityMusicPlayerBinding
 
-    // ImageView
+    // 노래 앨범 이미지
     private lateinit var cardImg : ImageView
+    // 노래 제목과 가수 이름
+    private lateinit var songTiltleText : TextView
+    private lateinit var singerText : TextView
+
     lateinit var music : MediaPlayer
 
+    // 음악 시간 표시
     lateinit var startT : TextView
     lateinit var finishT : TextView
 
+    // Bar
     lateinit var musicBar : SeekBar
     lateinit var volumeBar : SeekBar
     private var totalTime = 0
 
+    // Button
     private lateinit var playBtn : ToggleButton
     lateinit var playNextBtn : ImageButton
     lateinit var playPreviousBtn : ImageButton
 
+    // 배열
     private var fileList = arrayOf(R.raw.only_one, R.raw.wind_and_wish, R.raw.the_song)
-    //private var fileImgList = arrayOf(R.drawable.only_one_img, R.drawable.wind_and_wish_img, R.drawable.the_song)
+    private var fileImgList = arrayOf(R.drawable.only_one_img, R.drawable.wind_and_wish_img, R.drawable.the_song)
+    private var singerList = arrayOf("비투비", "BTOB", "비투비(BTOB)")
+    private var songsTitleList = arrayOf("너 없인 안 된다", "나의 바람(Wind And Wish)", "노래(The Song)")
     private var fileNum:Int = 0
 
     var flag = false
@@ -55,8 +65,15 @@ class MusicPlayerActivity : AppCompatActivity() {
         volumeBar = binding.volume
         playNextBtn = binding.playNext
         playPreviousBtn = binding.playPrevious
+        singerText = binding.singer
+        songTiltleText = binding.songTitle
 
+
+        // 음악 데이터 초기 셋팅
         music = MediaPlayer.create(this, fileList[0])
+        cardImg.setImageResource(fileImgList[0])
+        singerText.text = singerList[0]
+        songTiltleText.text = songsTitleList[0]
 
         // 재생 & 정지 버튼
         playBtn.setOnClickListener {playMusic()}
@@ -84,8 +101,6 @@ class MusicPlayerActivity : AppCompatActivity() {
         //음악 반복 재생
         //music.isLooping = true
 
-        music = MediaPlayer.create(this, fileList[0])
-
         setMusic()
         BarHandler()
 
@@ -109,6 +124,10 @@ class MusicPlayerActivity : AppCompatActivity() {
             Music.setSeekBar(volumeBar, music, true)
             //Music 객체의 setSeekBar 함수를 사용하여 음악 재생 진행도를 표시하는 SeekBar(musicBar)에 대한 리스너를 설정
             Music.setSeekBar(musicBar, music, null, true)
+
+            /*val params = music.playbackParams
+            params.speed = 1.0f // 배속을 조절하려면 여기에 원하는 배속 값을 넣으세요.
+            music.playbackParams = params*/
         }
 
     }
@@ -129,8 +148,11 @@ class MusicPlayerActivity : AppCompatActivity() {
     fun setData(){
         music.release()
 
+        // fileNum에 따른 데이터 변경
         music = MediaPlayer.create(this,fileList[fileNum])
-        //cardImg = ImageView(fileImgList[fileNum])
+        cardImg.setImageResource(fileImgList[fileNum])
+        singerText.text = singerList[fileNum]
+        songTiltleText.text = songsTitleList[fileNum]
 
         setMusic()
         BarHandler()
@@ -175,5 +197,7 @@ class MusicPlayerActivity : AppCompatActivity() {
             }
         }).start()
     }
+
+
 
 }

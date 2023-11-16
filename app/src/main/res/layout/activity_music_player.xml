@@ -32,22 +32,26 @@
         android:orientation="vertical">
 
       <TextView
-          android:layout_width="100dp"
+          android:id="@+id/songTitle"
+          android:layout_width="match_parent"
           android:layout_height="40dp"
           android:layout_marginTop="20dp"
           android:textSize="25sp"
+          android:gravity="center_horizontal"
           android:text = "노래 제목"/>
 
       <TextView
-          android:layout_width="60dp"
+          android:id="@+id/singer"
+          android:layout_width="match_parent"
           android:layout_height="20dp"
           android:textSize="15sp"
           android:text = "가수 이름"
+          android:gravity="center_horizontal"
           android:textColor="#808080"/>
 
     </LinearLayout>
 
-    <!--  노래 가사  -->
+    <!--  노래 가사 안 넣을 수도 있음  -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
