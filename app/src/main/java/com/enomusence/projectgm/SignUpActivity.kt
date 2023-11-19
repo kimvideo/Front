@@ -45,7 +45,7 @@ class SignUpActivity : AppCompatActivity() {
                             "password" to password.text.toString(),
                             "username" to username.text.toString()
                         )
-
+                        //test
                         // Firebase Authentication UID를 사용하여 Firestore에 저장
                         val db = FirebaseFirestore.getInstance()
                         db.collection("User")
