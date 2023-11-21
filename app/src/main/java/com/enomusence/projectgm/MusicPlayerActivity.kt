@@ -46,7 +46,7 @@ class MusicPlayerActivity : AppCompatActivity() {
     private var fileList = arrayOf(R.raw.only_one, R.raw.wind_and_wish, R.raw.the_song)
     private var fileImgList = arrayOf(R.drawable.only_one_img, R.drawable.wind_and_wish_img, R.drawable.the_song)
     private var singerList = arrayOf("비투비", "BTOB", "비투비(BTOB)")
-    private var songsTitleList = arrayOf("너 없인 안 된다", "나의 바람(Wind And Wish)", "노래(The Song)")
+    private var songsTitleList = arrayOf("너 없인 안 된다", "나의 바람", "노래(The Song)")
     private var fileNum:Int = 0
 
     var flag = false

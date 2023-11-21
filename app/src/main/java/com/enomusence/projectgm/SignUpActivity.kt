@@ -54,6 +54,9 @@ class SignUpActivity : AppCompatActivity() {
                             .addOnSuccessListener {
                                 Log.d("JoinActivity", "DocumentSnapshot added with ID: $userId")
                                 Toast.makeText(this, "회원가입 성공", Toast.LENGTH_LONG).show()
+                                // 회원가입 성공 시 로그인 화면으로 전환
+                                val signUpOk = Intent(this, LoginActivity::class.java)
+                                startActivity(signUpOk)
                             }
                             .addOnFailureListener { e ->
                                 Log.w("JoinActivity", "Error adding document", e)
