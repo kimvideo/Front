@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -19,7 +21,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     lateinit var imogeRecyclerView1 : RecyclerView
     lateinit var navigationView: NavigationView
     lateinit var drawerLayout: DrawerLayout
-
+    private lateinit var selectedDataTextView: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -27,13 +29,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         //여기부터 스토리뷰에 들어갈 코드
         val storyBoard = findViewById<RecyclerView>(R.id.imogerecycler)
         val itemList = ArrayList<friendData>()
-        itemList.add(friendData("test1","화남"))
+       // itemList.add(friendData("test1","화남"))
 
 
         val storyAdapter =storyAdapter(itemList)
         storyAdapter.notifyDataSetChanged()
         storyBoard.adapter = storyAdapter
         storyBoard.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+
 
         //버튼 바인딩
         binding = ActivityMainBinding.inflate(layoutInflater)

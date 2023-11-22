@@ -94,6 +94,7 @@
                 <!--캘린더-->
 
                 <CalendarView
+                    android:id="@+id/calendarView"
                     android:layout_width="match_parent"
                     android:layout_height="400dp" />
 

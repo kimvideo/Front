@@ -32,9 +32,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
+       <!-- <activity
             android:name=".JoinActivity"
-            android:exported="false" />
+            android:exported="false" /> -->
         <activity
             android:name=".PlaylistActivity"
             android:exported="false" />

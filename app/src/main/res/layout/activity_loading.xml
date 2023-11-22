@@ -24,7 +24,7 @@
         android:layout_height="200dp"
         android:layout_gravity="center"
         android:id="@+id/todaysSomething"
-        android:text="오늘의 한마디"
+        android:text=""
         android:textAlignment="center"
         android:gravity="center"
         android:textSize="30sp"
