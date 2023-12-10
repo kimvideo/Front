@@ -17,8 +17,8 @@ class storyAdapter (val itemList: ArrayList<friendData>): RecyclerView.Adapter<s
     }
 
     override fun onBindViewHolder(holder:stroyViewHolder, position: Int) {
-        holder.userid.text=itemList[position].Userid
-        holder.userimg.text=itemList[position].State
+       // holder.userid.text=itemList[position].Userid
+        //holder.userimg.text=itemList[position].State
 
     }
     inner class stroyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

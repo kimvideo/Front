@@ -44,6 +44,10 @@ class ResultActivity : AppCompatActivity() {
                         // 문서가 존재하면 데이터를 가져와서 TextView에 설정합니다.
                         val data = documentSnapshot.getString("feeling")
                         textView.text = data
+
+                        //감정 데이터 불러오기
+
+
                         if(textView.text == "Positive"){
                             imageView.setImageResource(R.drawable.happy)
 

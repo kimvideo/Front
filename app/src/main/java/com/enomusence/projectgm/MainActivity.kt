@@ -1,5 +1,6 @@
 package com.enomusence.projectgm
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
@@ -15,6 +16,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.enomusence.projectgm.databinding.ActivityMainBinding
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var  binding : ActivityMainBinding
@@ -22,6 +25,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     lateinit var navigationView: NavigationView
     lateinit var drawerLayout: DrawerLayout
     private lateinit var selectedDataTextView: TextView
+
+    //list
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -43,10 +48,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val view = binding.root
         setContentView(view)
 
-        binding.playlistButton.setOnClickListener{   // 플레이리스트 버튼
-            val intent = Intent(this, PlaylistActivity::class.java)
+        binding.playlistButton.setOnClickListener{   // 플레이리스트 버튼 -> 로그아웃
+            Firebase.auth.signOut()
+            Toast.makeText(this,"로그아웃 완료", Toast.LENGTH_LONG).show()
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
+
         binding.measureButton.setOnClickListener{  //측청 버튼
             val intent = Intent(this,LoadingActivity::class.java)
             startActivity(intent)
@@ -65,6 +73,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // 네비게이션 드로어 내에있는 화면의 이벤트를 처리하기 위해 생성
         navigationView = findViewById(R.id.nav_view)
         navigationView.setNavigationItemSelectedListener(this) //navigation 리스너
+
+
+
+
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
