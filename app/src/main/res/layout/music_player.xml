@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white"
+        app:layout_behavior="ccom.google.android.material.bottomsheet.BottomSheetBehavior">
+
+    <!--  닫기 버튼  -->
+        <ImageButton
+            android:id="@+id/closeBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/back_page"
+            android:layout_gravity="right"
+            android:layout_marginTop="20dp"
+            android:contentDescription= " "
+            android:layout_marginRight="10dp"
+            android:background="@android:color/transparent"/>
+
+        <!--  노래 이미지  -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/musicImg"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:src = "@drawable/only_one_img"/>
+
+        </LinearLayout>
+        <!--노래 제목-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/songTitle"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:textSize="25sp"
+                android:gravity="center_horizontal"
+                android:text = "노래 제목"/>
+
+            <TextView
+                android:id="@+id/singer"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:textSize="15sp"
+                android:text = "가수 이름"
+                android:gravity="center_horizontal"
+                android:textColor="#808080"/>
+
+        </LinearLayout>
+
+
+
+        <!--  재생 바  -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:gravity="center">
+
+            <SeekBar
+                android:id="@+id/musicSeekBar"
+                android:layout_width="350dp"
+                android:layout_height="40dp"
+                android:progress="0" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <!--재생 구간-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:text = "0:00"
+                android:id="@+id/startTime"/>
+
+            <!--음악 길이-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="280dp"
+                android:text = "0:00"
+                android:id="@+id/finishTime"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <!--음악 볼륨-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src = "@drawable/volume_up"
+                    android:layout_marginLeft = "20dp" />
+
+                <SeekBar
+                    android:layout_width="70dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/volume"/>
+
+            </LinearLayout>
+
+            <!--  플레이 버튼  -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <!--    이전 음악 재생 버튼    -->
+                <ImageButton
+                    android:id="@+id/playPrevious"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:src = "@drawable/skip_previous"
+                    android:contentDescription= " "
+                    android:background="@android:color/transparent"/>
+
+                <!--    현재 음악 재생 & 정지 버튼    -->
+                <ToggleButton
+                    android:id="@+id/playAndPause"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/play_pause"
+                    android:textOff=""
+                    android:textOn="" />
+
+                <!--    다음 음악 재생 버튼    -->
+                <ImageButton
+                    android:id="@+id/playNext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src = "@drawable/skip_next"
+                    android:contentDescription= " "
+                    android:background="@android:color/transparent"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"/>
+
+    </LinearLayout>
+
+</layout>

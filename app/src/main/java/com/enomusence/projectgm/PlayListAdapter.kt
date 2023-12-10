@@ -7,8 +7,9 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
 
-class PlayListAdapter ( private val context: Context, private val songsTitleList: Array<String>, private val fileImgList: Array<Int>, private val singerList: Array<String>) : BaseAdapter(){
+class PlayListAdapter ( private val context: Context, private val songsTitleList: MutableList<String>, private val fileImgList: MutableList<String>, private val singerList: MutableList<String>) : BaseAdapter(){
     override fun getCount(): Int {
         return songsTitleList.size
     }
@@ -28,10 +29,15 @@ class PlayListAdapter ( private val context: Context, private val songsTitleList
         val musicTitle: TextView = view.findViewById(R.id.musicTitle)
         val singer: TextView = view.findViewById(R.id.musicSigner)
 
-        albumImg.setImageResource(fileImgList[position])
+        Glide.with(context)
+            .load(fileImgList[position])
+            .into(albumImg)
+
         musicTitle.text = songsTitleList[position]
         singer.text = singerList[position]
 
+
         return view
     }
+
 }
