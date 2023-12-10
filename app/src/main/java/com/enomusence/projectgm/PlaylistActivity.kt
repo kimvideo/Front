@@ -93,53 +93,158 @@ class PlaylistActivity : AppCompatActivity() {
         // firebase에서 감정 값을 받아올 때 그것에 따라 해시태그 변경
         // 앱을 종료했을 때 음악이 꺼지도록
 
-        fireBaseData.collection("HappyMusicDB")
-            .get()
-            .addOnSuccessListener { result ->
-                val allDocuments = result.documents
-                val randomUids = mutableSetOf<String>()
+        val receivedData = intent.getStringExtra("feelingData")
 
-                // 20개의 랜덤 UID 가져오기
-                while (randomUids.size < 20 && allDocuments.isNotEmpty()) {
-                    val randomIndex = (0 until allDocuments.size).random()
-                    val randomUid = allDocuments[randomIndex].id
+        if(receivedData == "Negative"){
+            tagText.text = "#슬픔 #우울 #변화"
+            fireBaseData.collection("SadMusicDB")
+                .get()
+                .addOnSuccessListener { result ->
+                    val allDocuments = result.documents
+                    val randomUids = mutableSetOf<String>()
 
-                    // 중복된 UID가 아니라면 추가
-                    if (!randomUids.contains(randomUid)) {
-                        randomUids.add(randomUid)
+                    // 20개의 랜덤 UID 가져오기
+                    while (randomUids.size < 20 && allDocuments.isNotEmpty()) {
+                        val randomIndex = (0 until allDocuments.size).random()
+                        val randomUid = allDocuments[randomIndex].id
+
+                        // 중복된 UID가 아니라면 추가
+                        if (!randomUids.contains(randomUid)) {
+                            randomUids.add(randomUid)
+                        }
+
+                        allDocuments.removeAt(randomIndex)
                     }
 
-                    allDocuments.removeAt(randomIndex)
-                }
+                    // 중복된 UID를 방지하면서 데이터 추가
+                    for (uid in randomUids) {
+                        val document = result.documents.firstOrNull { it.id == uid }
 
-                // 중복된 UID를 방지하면서 데이터 추가
-                for (uid in randomUids) {
-                    val document = result.documents.firstOrNull { it.id == uid }
-
-                    if (document != null) {
-                        try {
-                            val data = document.data
-                            if (data != null) {
-                                fileList.add(data["url"] as String)
-                                fileImgList.add(data["album_cover"] as String)
-                                singerList.add(data["singer"] as String)
-                                songsTitleList.add(data["title"] as String)
+                        if (document != null) {
+                            try {
+                                val data = document.data
+                                if (data != null) {
+                                    fileList.add(data["url"] as String)
+                                    fileImgList.add(data["album_cover"] as String)
+                                    singerList.add(data["singer"] as String)
+                                    songsTitleList.add(data["title"] as String)
+                                }
+                            } catch (e: Exception) {
+                                // 예외처리
+                                e.printStackTrace()
                             }
-                        } catch (e: Exception) {
-                            // 예외처리
-                            e.printStackTrace()
                         }
                     }
-                }
 
-                // ArrayAdapter를 사용하여 ListView에 음악 파일 이름 표시
-                val playlistAdapter = PlayListAdapter(this, songsTitleList, fileImgList, singerList)
-                playlistListView.adapter = playlistAdapter
-            }
-            .addOnFailureListener { exception ->
-                // 데이터 가져오기 실패 시 예외 처리
-                exception.printStackTrace()
-            }
+                    // ArrayAdapter를 사용하여 ListView에 음악 파일 이름 표시
+                    val playlistAdapter = PlayListAdapter(this, songsTitleList, fileImgList, singerList)
+                    playlistListView.adapter = playlistAdapter
+                }
+                .addOnFailureListener { exception ->
+                    // 데이터 가져오기 실패 시 예외 처리
+                    exception.printStackTrace()
+                }
+        }
+        else if(receivedData == "Neutral"){
+            tagText.text = "#일상 #인생 #평온"
+            fireBaseData.collection("NaturalMusicDB")
+                .get()
+                .addOnSuccessListener { result ->
+                    val allDocuments = result.documents
+                    val randomUids = mutableSetOf<String>()
+
+                    // 20개의 랜덤 UID 가져오기
+                    while (randomUids.size < 20 && allDocuments.isNotEmpty()) {
+                        val randomIndex = (0 until allDocuments.size).random()
+                        val randomUid = allDocuments[randomIndex].id
+
+                        // 중복된 UID가 아니라면 추가
+                        if (!randomUids.contains(randomUid)) {
+                            randomUids.add(randomUid)
+                        }
+
+                        allDocuments.removeAt(randomIndex)
+                    }
+
+                    // 중복된 UID를 방지하면서 데이터 추가
+                    for (uid in randomUids) {
+                        val document = result.documents.firstOrNull { it.id == uid }
+
+                        if (document != null) {
+                            try {
+                                val data = document.data
+                                if (data != null) {
+                                    fileList.add(data["url"] as String)
+                                    fileImgList.add(data["album_cover"] as String)
+                                    singerList.add(data["singer"] as String)
+                                    songsTitleList.add(data["title"] as String)
+                                }
+                            } catch (e: Exception) {
+                                // 예외처리
+                                e.printStackTrace()
+                            }
+                        }
+                    }
+
+                    // ArrayAdapter를 사용하여 ListView에 음악 파일 이름 표시
+                    val playlistAdapter = PlayListAdapter(this, songsTitleList, fileImgList, singerList)
+                    playlistListView.adapter = playlistAdapter
+                }
+                .addOnFailureListener { exception ->
+                    // 데이터 가져오기 실패 시 예외 처리
+                    exception.printStackTrace()
+                }
+        }
+        else if(receivedData == "Positive") {
+            tagText.text = "#하이텐션 #행복 #즐거움"
+            fireBaseData.collection("HappyMusicDB")
+                .get()
+                .addOnSuccessListener { result ->
+                    val allDocuments = result.documents
+                    val randomUids = mutableSetOf<String>()
+
+                    // 20개의 랜덤 UID 가져오기
+                    while (randomUids.size < 20 && allDocuments.isNotEmpty()) {
+                        val randomIndex = (0 until allDocuments.size).random()
+                        val randomUid = allDocuments[randomIndex].id
+
+                        // 중복된 UID가 아니라면 추가
+                        if (!randomUids.contains(randomUid)) {
+                            randomUids.add(randomUid)
+                        }
+
+                        allDocuments.removeAt(randomIndex)
+                    }
+
+                    // 중복된 UID를 방지하면서 데이터 추가
+                    for (uid in randomUids) {
+                        val document = result.documents.firstOrNull { it.id == uid }
+
+                        if (document != null) {
+                            try {
+                                val data = document.data
+                                if (data != null) {
+                                    fileList.add(data["url"] as String)
+                                    fileImgList.add(data["album_cover"] as String)
+                                    singerList.add(data["singer"] as String)
+                                    songsTitleList.add(data["title"] as String)
+                                }
+                            } catch (e: Exception) {
+                                // 예외처리
+                                e.printStackTrace()
+                            }
+                        }
+                    }
+
+                    // ArrayAdapter를 사용하여 ListView에 음악 파일 이름 표시
+                    val playlistAdapter = PlayListAdapter(this, songsTitleList, fileImgList, singerList)
+                    playlistListView.adapter = playlistAdapter
+                }
+                .addOnFailureListener { exception ->
+                    // 데이터 가져오기 실패 시 예외 처리
+                    exception.printStackTrace()
+                }
+        }
 
 
         // ListView 아이템 클릭 이벤트 처리

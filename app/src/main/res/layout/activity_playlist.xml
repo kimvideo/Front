@@ -16,21 +16,7 @@
             android:layout_height="60dp"
             tools:ignore="MissingConstraints" >
 
-            <!--로고, 내 정보 이미지-->
-            <ImageView
-                android:id ="@+id/user"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="5dp"
-                android:padding="5dp"
-                android:src="@drawable/useimg"/>
 
-            <ImageView
-                android:id="@+id/mainLogo"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/logo" />
 
             <ImageButton
                 android:id="@+id/backHome"
@@ -67,7 +53,7 @@
                 android:layout_gravity="center"
                 android:textSize="15sp"
                 android:textColor="#808080"
-                android:text="20곡 1시간 30분"/>
+                android:text="20곡 10분"/>
 
             <!--    해시태그    -->
             <TextView
@@ -76,13 +62,13 @@
                 android:layout_height="30dp"
                 android:layout_gravity="center"
                 android:textSize="20sp"
-                android:text="#분노 #진정 #폭우"/>
+                android:text=""/>
 
         </LinearLayout>
 
         <!--  구분 선  -->
         <View
-            android:layout_width="390dp"
+            android:layout_width="360dp"
             android:layout_height="2dp"
             android:layout_gravity="center"
             android:layout_marginBottom="8dp"
@@ -96,17 +82,17 @@
 
             <ListView
                 android:id="@+id/playlist"
-                android:layout_width="380dp"
-                android:layout_height="460dp"
+                android:layout_width="350dp"
+                android:layout_height="370dp"
                 tools:listitem="@layout/music_list_view"
                 android:layout_gravity="center"
-                android:layout_marginLeft="15dp"/>
+                android:layout_marginStart="15dp"/>
 
         </LinearLayout>
 
         <!--  구분 선  -->
         <View
-            android:layout_width="390dp"
+            android:layout_width="360dp"
             android:layout_height="2dp"
             android:layout_gravity="center"
             android:layout_marginTop="8dp"
@@ -114,9 +100,8 @@
             android:background="#808080" />
 
         <LinearLayout
-            android:layout_width="390dp"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
-
             android:layout_gravity="center"
             android:id="@+id/nowMusic">
 
@@ -127,21 +112,23 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_margin="10dp"
-                android:background="#808080"/>
+                android:background="@color/black"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="45dp"
+                android:layout_height="50dp"
                 android:orientation="vertical"
                 android:layout_gravity="center_vertical">
 
                 <!--    현재 재생 중인 음악의 제목   -->
                 <TextView
                     android:id="@+id/playMusicTitle"
-                    android:layout_width="150dp"
-                    android:layout_height="20dp"
-                    android:textSize="16sp"
-                    android:text="Title"/>
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:textSize="18sp"
+                    android:text="Title"
+                    android:maxLines="1"
+                    android:ellipsize="end"/>
 
                 <!--    현재 재생중인 음악의 가수이름   -->
                 <!--      현재 재생중인 음악의 정보로 변경되도록 구현 필요      -->
@@ -150,47 +137,49 @@
                     android:layout_width="wrap_content"
                     android:layout_height="18dp"
                     android:textSize="14sp"
-                    android:text="Singer"/>
+                    android:text="Singer"
+                    android:maxLines="1"
+                    android:ellipsize="end"/>
 
             </LinearLayout>
 
-            <!--음악 재생 / 건너뛰기 / 이전 음악 버튼-->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical">
+        </LinearLayout>
 
-                <!--이전 음악 버튼-->
-                <ImageButton
-                    android:id="@+id/playPreviousMusic"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginRight="15dp"
-                    android:background="@android:color/transparent"
-                    android:contentDescription=" "
-                    android:src="@drawable/skip_previous" />
+        <!--음악 재생 / 건너뛰기 / 이전 음악 버튼-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center">
 
-                <!--재생 버튼-->
-                <!-- 버튼을 눌렀을 때 정지 버튼과 이미지가 바뀌는 것 구현해야함 -->
-                <ToggleButton
-                    android:id="@+id/playMusic"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginRight="10dp"
-                    android:background="@drawable/play_pause"
-                    android:textOff=""
-                    android:textOn="" />
+            <!--이전 음악 버튼-->
+            <ImageButton
+                android:id="@+id/playPreviousMusic"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="20dp"
+                android:background="@android:color/transparent"
+                android:contentDescription=" "
+                android:src="@drawable/skip_previous" />
 
-                <!-- 음악 건너뛰기 버튼 -->
-                <ImageButton
-                    android:id="@+id/playNextMusic"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:background="@android:color/transparent"
-                    android:contentDescription=" "
-                    android:src="@drawable/skip_next" />
+            <!--재생 버튼-->
+            <!-- 버튼을 눌렀을 때 정지 버튼과 이미지가 바뀌는 것 구현해야함 -->
+            <ToggleButton
+                android:id="@+id/playMusic"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/play_pause"
+                android:textOff=""
+                android:textOn="" />
 
-            </LinearLayout>
+            <!-- 음악 건너뛰기 버튼 -->
+            <ImageButton
+                android:id="@+id/playNextMusic"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@android:color/transparent"
+                android:contentDescription=" "
+                android:src="@drawable/skip_next" />
 
         </LinearLayout>
 

@@ -17,7 +17,6 @@
             android:id="@+id/musicImage"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_weight="1"
             android:scaleType="fitXY"
             android:src="@drawable/only_one_img"
             android:layout_margin="5dp"
@@ -34,13 +33,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="MusicTitle"
-                android:textSize="20sp"/>
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:textSize="18sp"/>
 
             <TextView
                 android:id="@+id/musicSigner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Singer"
+                android:maxLines="1"
+                android:ellipsize="end"
                 android:textSize="15sp"/>
 
         </LinearLayout>

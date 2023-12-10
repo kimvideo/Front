@@ -19,11 +19,7 @@ class ResultActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_result)
-        val Btn = findViewById<Button>(R.id.playlistBtn)
-        Btn.setOnClickListener{
-            val intent = Intent(this, PlaylistActivity::class.java)
-            startActivity(intent)
-        }
+
         imageView = findViewById(R.id.resultImg)
         //결과 보여주기
         textView = findViewById(R.id.resultComent)
@@ -47,6 +43,8 @@ class ResultActivity : AppCompatActivity() {
 
                         //감정 데이터 불러오기
 
+                        // 플레이리스트에 감정 전달 변수
+                        val intent = Intent(this, PlaylistActivity::class.java)
 
                         if(textView.text == "Positive"){
                             imageView.setImageResource(R.drawable.happy)
@@ -58,6 +56,18 @@ class ResultActivity : AppCompatActivity() {
                         else if(textView.text == "Negative"){
                             imageView.setImageResource(R.drawable.negative)
                         }
+
+                        val Btn = findViewById<Button>(R.id.playlistBtn)
+                        Btn.setOnClickListener{
+                            val intent = Intent(this, PlaylistActivity::class.java)
+                            startActivity(intent)
+
+                            // 감정 전달
+                            intent.putExtra("feelingData", data)
+                            startActivity(intent)
+
+                        }
+
                     } else {
                         textView.text = "No such document"
                     }
