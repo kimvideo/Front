@@ -6,15 +6,15 @@ import android.media.AudioManager
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.os.Handler
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
-import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.ListView
+import android.widget.SeekBar
 import android.widget.TextView
 import android.widget.ToggleButton
 import androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -24,7 +24,6 @@ import com.enomusence.projectgm.databinding.ActivityPlaylistBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -60,7 +59,13 @@ class PlaylistActivity : AppCompatActivity() {
     // tag text
     private lateinit var tagText : TextView
 
+/*    // SeekBar
+    private lateinit var seekBar: SeekBar
+    private lateinit var leftTime: TextView
+    private lateinit var rightTime: TextView*/
+
     var flag = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_playlist)
@@ -76,6 +81,9 @@ class PlaylistActivity : AppCompatActivity() {
         songTiltleText = binding.playMusicTitle
         singerText = binding.playMusicSinger
         tagText = binding.playlistHashtag
+/*        seekBar = binding.musicSeekBar
+        leftTime = binding.startTime
+        rightTime = binding.finishTime*/
 
         music = MediaPlayer()
 
@@ -88,13 +96,11 @@ class PlaylistActivity : AppCompatActivity() {
 
         val playlistListView: ListView = findViewById(R.id.playlist)
 
-        // firestore에서 값 가져오기
-        // 곡 제목이 너무 긴 경우 앨범 표지가 사이즈가 작아짐
-        // firebase에서 감정 값을 받아올 때 그것에 따라 해시태그 변경
-        // 앱을 종료했을 때 음악이 꺼지도록
-
+        // ResultActivity에서 결과 가져오기
         val receivedData = intent.getStringExtra("feelingData")
 
+        // firestore에서 감정에 따라 값 가져오기
+        // tagText를 통해 감정별 해시태그 변경하기
         if(receivedData == "Negative"){
             tagText.text = "#슬픔 #우울 #변화"
             fireBaseData.collection("SadMusicDB")
@@ -254,7 +260,7 @@ class PlaylistActivity : AppCompatActivity() {
             fileNum = position
         })
 
-        // 현재 재생 중인 음악 클릭
+       /* // 현재 재생 중인 음악 클릭
         val nowPlayMusic = findViewById<LinearLayout>(R.id.nowMusic)
         nowPlayMusic.setOnClickListener {
             // 현재 재생 중인 음악의 정보 가져오기
@@ -283,9 +289,8 @@ class PlaylistActivity : AppCompatActivity() {
                 val behavior = BottomSheetBehavior.from(parent)
                 behavior.state = BottomSheetBehavior.STATE_EXPANDED
             }
-        }
+        }*/
 
-        // 하단 바를 처음에 listView를 눌렀을 때 보이도록하는 로직을 추가해야할듯
 
         // 음악 재생 및 정지 버튼
         playBtn.setOnClickListener {togglePlayMusicButton()}
@@ -310,6 +315,7 @@ class PlaylistActivity : AppCompatActivity() {
             setData()
         }
 
+
     }
 
     private fun internet() {
@@ -323,7 +329,6 @@ class PlaylistActivity : AppCompatActivity() {
         Glide.with(this)
             .load(fileImgList[fileNum])
             .into(cardImg)
-
     }
     private fun clickPlayListMusic(fileIndex: Int) {
         // 현재 재생중인 음악 정지
@@ -373,6 +378,28 @@ class PlaylistActivity : AppCompatActivity() {
         playBtn.setBackgroundResource(R.drawable.pause_btn)
         flag = true
 
+    }
+
+
+    override fun onBackPressed() {
+
+        // 뒤로가기 버튼을 눌렀을 때 음악 정지
+        stopMusic()
+
+        // MainActivity로 이동
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+
+        // 현재 액티비티 종료
+        finish()
+        super.onBackPressed()
+    }
+
+    private fun stopMusic() {
+        if (::music.isInitialized && music.isPlaying) {
+            music.stop()
+            music.release()
+        }
     }
 
 }

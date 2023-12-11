@@ -13,15 +13,15 @@
         android:text="측정결과"
         android:textSize="30sp"
         android:gravity="center"
-        android:padding="20dp"
+        android:padding="10dp"
 
         />
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:layout_margin="50dp"
-        android:src="@drawable/useimg"
+        android:layout_margin="40dp"
+        android:background="@color/white"
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -33,14 +33,14 @@
     <!-- 측정결과 설명 -->
     <TextView
         android:id="@+id/resultComent"
-        android:layout_width="350dp"
+        android:layout_width="300dp"
         android:layout_height="100dp"
         android:background="#cccccc"
         android:textAlignment="center"
         android:gravity="center"
         android:layout_gravity="center"
-        android:textSize="25dp"
-        android:text="측정결과 : 이런 기분입니다"
+        android:textSize="22sp"
+        android:text=""
         />
     <!-- 측정을 토대로 추천 플레이리스트 재생 -->
     <Button

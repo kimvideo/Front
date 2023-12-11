@@ -58,19 +58,18 @@
             </FrameLayout>
 
             <View
-                android:layout_width="390dp"
+                android:layout_width="320dp"
                 android:layout_height="2dp"
-                android:layout_marginLeft="10dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_gravity="center"
                 android:background="#808080"/>
 
-            <LinearLayout
+            <!--<LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="70dp">
 
-                <!-- 스토리 뷰 -->
+                &lt;!&ndash; 스토리 뷰 &ndash;&gt;
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/imogerecycler"
                     android:layout_width="match_parent"
@@ -85,24 +84,24 @@
 
 
 
-            </LinearLayout>
+            </LinearLayout>-->
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="383dp">
+                android:layout_height="390dp">
 
                 <!--캘린더-->
 
                 <CalendarView
                     android:id="@+id/calendarView"
                     android:layout_width="match_parent"
-                    android:layout_height="400dp" />
+                    android:layout_height="360dp" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:gravity="center">
                 <!-- 측정 버튼-->
@@ -112,17 +111,17 @@
                     android:id="@+id/measure_Button"
                     android:gravity="center"
                     android:layout_width="300dp"
-                    android:layout_height="70dp"
-                    android:text="측정"
-                    android:textSize="20dp" />
+                    android:layout_height="50dp"
+                    android:text="감정 측정"
+                    android:textSize="18sp" />
                 <!-- 이전 플레이리스트 보기  -->
                 <Button
                     android:id="@+id/playlist_Button"
                     android:gravity="center"
                     android:layout_width="300dp"
-                    android:layout_height="70dp"
+                    android:layout_height="50dp"
                     android:text="로그아웃"
-                    android:textSize="20dp" />
+                    android:textSize="18sp" />
 
             </LinearLayout>
 

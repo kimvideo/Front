@@ -82,7 +82,7 @@
 
             <ListView
                 android:id="@+id/playlist"
-                android:layout_width="350dp"
+                android:layout_width="340dp"
                 android:layout_height="370dp"
                 tools:listitem="@layout/music_list_view"
                 android:layout_gravity="center"
@@ -144,6 +144,8 @@
             </LinearLayout>
 
         </LinearLayout>
+
+
 
         <!--음악 재생 / 건너뛰기 / 이전 음악 버튼-->
         <LinearLayout

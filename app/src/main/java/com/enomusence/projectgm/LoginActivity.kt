@@ -52,7 +52,7 @@ class LoginActivity : AppCompatActivity() {
             startActivity(Join)
         }
 
-        //로그아웃
+       /* //로그아웃
         val logoutBtn = findViewById<Button>(R.id.logOutBtn)
         logoutBtn.setOnClickListener {
             Firebase.auth.signOut()
@@ -64,7 +64,7 @@ class LoginActivity : AppCompatActivity() {
         val SkipBtn = findViewById<Button>(R.id.skipBtn)
         SkipBtn.setOnClickListener {
             startActivity(gotoMain)
-        }
+        }*/
 
     }
 }

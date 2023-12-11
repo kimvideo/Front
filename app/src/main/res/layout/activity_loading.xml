@@ -11,7 +11,7 @@
         android:id="@+id/loaing"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:layout_margin="90dp"
+        android:layout_margin="60dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,16 +19,16 @@
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/loading" />
+
     <TextView
-        android:layout_width="350dp"
+        android:id="@+id/todaysSomething"
+        android:layout_width="320dp"
         android:layout_height="200dp"
         android:layout_gravity="center"
-        android:id="@+id/todaysSomething"
+        android:background="#CCCCCC"
         android:text=""
         android:textAlignment="center"
+        android:textSize="24sp"
         android:gravity="center"
-        android:textSize="30sp"
-        android:background="#CCCCCC"
-
         />
 </LinearLayout>
